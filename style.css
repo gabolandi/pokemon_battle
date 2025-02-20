@@ -1,0 +1,159 @@
+/* Definir la fuente utilizando @font-face */
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('assets/fonts/Pokemon\ Solid.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pokemon hollow';
+    src: url('assets/fonts/Pokemon\ Hollow.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Colores logo pokemon*/
+/* dorado #FFCB05 */
+/* azul #3d7dca */
+/* Azúl oscuro #003a70 */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    color: #FFCB05;
+    /* Color de la letra */
+    -webkit-text-stroke: 2px #003a70;
+    /* Contorno negro de 2px */
+    font-size: 1.5rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Asegura el centrado vertical */
+    justify-content: center;
+    /* Asegura el centrado horizontal */
+    gap: 20px;
+    /* Espacio entre la imagen y el título */
+    padding: 10px;
+}
+
+/* Animación para el logo */
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        /* Inicia más pequeño */
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        /* Termina en su tamaño original */
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+        /* Empieza desplazado hacia abajo */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* Llega a su posición original */
+    }
+}
+
+#logo {
+    width: auto;
+    height: 10rem;
+    animation: fadeInZoom 1s ease-out;
+    /* Animación de 2 segundos */
+    width: auto;
+    height: 13rem;
+
+}
+
+h1 {
+    font-size: 2.5rem;
+    /* Ajusta el tamaño del texto */
+    -webkit-text-stroke: 2px #003a70;
+    /* Contorno resaltado */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Sombras para más efecto */
+    margin-top: 0;
+    opacity: 0;
+    /* Inicia invisible */
+    animation: slideInFromBottom 1s ease-out 1s;
+    /* Se anima en 1 segundo después de 1 segundos */
+    animation-fill-mode: forwards;
+    /* Mantiene el estado final de la animación */
+
+}
+
+.start {
+    animation: slideInFromBottom 0.5s ease-out 2s;
+    /* Se anima en 0.5 segundos después de 2 segundos */
+}
+
+
+/* Usar la fuente en el cuerpo del documento */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    font-family: 'Pokemon Solid', sans-serif;
+    color: rgb(242, 207, 8);
+    font-weight: 500;
+    /* Disminuir el grosor del texto */
+    letter-spacing: 0.1em;
+    /* Ajusta este valor según lo necesites */
+
+
+    background-image: url("Assets/img/fondo.jpg");
+    /* Ruta de la imagen de fondo */
+    background-size: cover;
+    /* Ajusta la imagen para cubrir toda la página */
+    background-attachment: fixed;
+    /* Fija la imagen para que no se desplace al hacer scroll */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    background-position: center;
+    /* Centra la imagen */
+    margin: 0;
+    /* Elimina márgenes para asegurar que la imagen ocupe toda la pantalla */
+}
+
+
+p,
+.pokemon {
+    font-family: 'Pokemon Solid', sans-serif;
+}
+
+
+.input {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border: 1px solid black;
+    padding: 5px;
+    width: 200px;
+
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
