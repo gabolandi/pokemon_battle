@@ -27,7 +27,7 @@ document.addEventListener("click", function (event) {
 document.querySelector(".pokeball").addEventListener("click", function () {
     console.log('Game started');
     $("#start").hide();
-    $("#gender").show();
+    $("#selection").show();
 
 });
 
@@ -37,6 +37,7 @@ document.querySelector("#ash").addEventListener("click", function () {
     // Ocultar Misty y resaltar Ash
     $("#misty").hide();
     $("#ash").addClass("active-trainer");
+    $(".select-paragraph").text('You choose Ash')
 
     // Crear el botón de "Change Trainer"
     if (!document.querySelector("#changeTrainerButton")) {
@@ -44,26 +45,22 @@ document.querySelector("#ash").addEventListener("click", function () {
         changeTrainerButton.id = "changeTrainerButton";
         changeTrainerButton.textContent = "Change Trainer";
         document.getElementById("gender").appendChild(changeTrainerButton);
-
-
         // Evento para cambiar de entrenador
         changeTrainerButton.addEventListener("click", function () {
             $("#misty").show();
             $("#ash").removeClass("active-trainer");
             changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
-            continueBotton.remove(); // Eliminar el botón para continuar
+            continueButton.remove(); // Eliminar el botón para continuar
         });
     }
     if (!document.querySelector("#continueButton")) {
-        let continueBotton = document.createElement("button");
-        continueBotton.id = "continueButton";
-        continueBotton.textContent = "Select Pokemon";
-        document.getElementById("gender").appendChild(continueBotton);
+        let continueButton = document.createElement("button");
+        continueButton.id = "continueButton";
+        continueButton.textContent = "Select Pokemon";
+        document.getElementById("gender").appendChild(continueButton);
         // Evento para cambiar de entrenador
-        continueBotton.addEventListener("click", function () {
-            $("#ash").show();
-            $("#misty").removeClass("active-trainer");
-            continueBotton.remove(); // Eliminar el botón para continuar
+        continueButton.addEventListener("click", function () {
+            continueButton.remove(); // Eliminar el botón para continuar
             changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
         });
         // Evento para pasar a la selección de Pokémon
@@ -82,6 +79,7 @@ document.querySelector("#misty").addEventListener("click", function () {
     // Ocultar Misty y resaltar Ash
     $("#ash").hide();
     $("#misty").addClass("active-trainer");
+    $(".select-paragraph").text('You choose Misty')
 
     // Crear el botón de "Change Trainer"
     if (!document.querySelector("#changeTrainerButton")) {
@@ -89,33 +87,28 @@ document.querySelector("#misty").addEventListener("click", function () {
         changeTrainerButton.id = "changeTrainerButton";
         changeTrainerButton.textContent = "Change Trainer";
         document.getElementById("gender").appendChild(changeTrainerButton);
-
         // Evento para cambiar de entrenador
         changeTrainerButton.addEventListener("click", function () {
             $("#ash").show();
             $("#misty").removeClass("active-trainer");
             changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
-            continueBotton.remove(); // Eliminar el botón para continuar
+            continueButton.remove(); // Eliminar el botón para continuar
         });
     }
     if (!document.querySelector("#continueButton")) {
-        let continueBotton = document.createElement("button");
-        continueBotton.id = "continueButton";
-        continueBotton.textContent = "Select Pokemon";
-        document.getElementById("gender").appendChild(continueBotton);
+        let continueButton = document.createElement("button");
+        continueButton.id = "continueButton";
+        continueButton.textContent = "Select Pokemon";
+        document.getElementById("gender").appendChild(continueButton);
         // Evento para cambiar de entrenador
-        continueBotton.addEventListener("click", function () {
-            $("#misty").show();
-            $("#ash").removeClass("active-trainer");
-            continueBotton.remove(); // Eliminar el botón para continuar
+        continueButton.addEventListener("click", function () {
+            continueButton.remove(); // Eliminar el botón para continuar
             changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
         });
-
         // Evento para pasar a la selección de Pokémon
         continueButton.addEventListener("click", function () {
             // Mostrar la sección de selección de Pokémon
             $("#pokemons").removeClass("hidden");
-
             // Eliminar el botón de continuar
             continueButton.remove();
         });
@@ -123,7 +116,42 @@ document.querySelector("#misty").addEventListener("click", function () {
 });
 
 
+// Seleccionar pokemones
+document.querySelector('#pikachu').addEventListener('click', function(){
+    $("#charmander").hide();
+    $("#squırtle").hide();
+    $("#bulbasaur").hide();
+    $('#pikachu').addClass('acitve-pokemon')
+    $(".select-paragraph").append(' and Pikachu as your partner')
+    console.log('Pikachu selected')
+});
 
+document.querySelector('#charmander').addEventListener('click', function(){
+    $("#pikachu").hide();
+    $("#squırtle").hide();
+    $("#bulbasaur").hide();
+    $('#charmander').addClass('acitve-pokemon')
+    $(".select-paragraph").append(' and Charmander as your partner')
+    console.log('Charmander selected')
+});
+
+document.querySelector('#squırtle').addEventListener('click', function(){
+    $("#charmander").hide();
+    $("#pikachu").hide();
+    $("#bulbasaur").hide();
+    $('#squırtle').addClass('acitve-pokemon')
+    $(".select-paragraph").append(' and Squırtle as your partner')
+    console.log('Squirtle selected')
+});
+
+document.querySelector('#bulbasaur').addEventListener('click', function(){
+    $("#charmander").hide();
+    $("#squırtle").hide();
+    $("#pikachu").hide();
+    $('#bulbasaur').addClass('acitve-pokemon')
+    $(".select-paragraph").append(' and bulbasaur as your partner')
+    console.log('Bulbasaur selected')
+});
 
 // Sonidos
 function makeSound(pokemonId) {
@@ -168,10 +196,10 @@ function makeSound(pokemonId) {
 const backgroundMusic = document.getElementById("background-music");
 
 //función para iniciar el sonido si no se reproduce automáticamente
-// document.addEventListener("click", function () {
-//     if (backgroundMusic.paused) {
-//         backgroundMusic.play();
-//     }
-// });
+ document.addEventListener("click", function () {
+     if (backgroundMusic.paused) {
+         backgroundMusic.play();
+     }
+ });
 
 

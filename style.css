@@ -70,7 +70,6 @@ body {
 }
 
 @keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -78,11 +77,9 @@ body {
     100% {
         transform: translateY(0);
     }
-
     40% {
         transform: translateY(-30px);
     }
-
     60% {
         transform: translateY(-15px);
     }
@@ -117,7 +114,6 @@ body {
     /* Asegura el centrado horizontal */
     gap: 20px;
     /* Espacio entre la imagen y el título */
-    padding: 10px;
 }
 
 /* Animación para el logo */
@@ -157,25 +153,18 @@ h1 {
 .pokeball {
     height: 10rem;
 }
-
+.selection{
+    display: flex;
+    flex-direction: row;
+}
 p,
 .pokemon {
     font-family: 'Pokemon Solid', sans-serif;
 }
 
 
-.input {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    border: 1px solid black;
-    padding: 5px;
-    width: 200px;
-
-}
-
 .pokemon {
-    height: 100px;
+    height: 8rem;
 }
 
 /* Oculta todos los elementos excepto .header y .start */
@@ -194,6 +183,13 @@ p,
     animation: bounce 1s infinite;
     transition: all 0.3s ease;
     /* Se repite la animación */
+}
+
+
+.pokemon:hover{
+    height: 10rem;
+    animation: bounce 1s infinite;
+    transition: all 0.3s ease;
 }
 
 #ash,
