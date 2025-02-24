@@ -6,53 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="Assets/img/Pokemon-Logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <title>Pokemon Last Edition</title>
 </head>
 
-<body>
+<body class="">
 
     <div class="container">
-         <audio id="background-music" src="Assets/sounds/soundtracks/soundtrack-to-start.mp3" loop autoplay></audio>
-
-        <div class="header">
-        <a href="index.html"><img id="logo" class="logo-pokemon" src="Assets/img/Pokemon-Logo.png" alt="logo-pokemon"></a>
+        <audio id="background-music" src="Assets/sounds/soundtracks/soundtrack-to-start.mp3" loop autoplay></audio>
+        <div class="header ">
+            <a href="index.html"><img id="logo" class="logo-pokemon" src="Assets/img/Pokemon-Logo.png"
+                    alt="logo-pokemon"></a>
             <h1 class="w3-animate-bot">Last Edition</h1>
         </div>
-        <div id="start">
+        <div id="start" class="font_style">
             <h2 id="title">Press the ball to Start</h2>
             <buttom><img class="pokeball" src="Assets/img/Pokeball.gif" alt="closed pokeball" id="openPokeball">
             </buttom>
         </div>
-
-
         <div id="selection" class="hidden">
-            <p class='select-paragraph'>Select your trainer</p>
-            <div id="gender" >
-               
+            <p id="selectionMessage" class='select-paragraph font_style'>Select your trainer</p>
+            <div id="gender">
                 <img id="ash" src="Assets/img/ash.png" alt="">
                 <img id="misty" src="Assets/img/misty.webp" alt="">
             </div>
+
+            <div class="chooseButtons ">
+                <button id="back" class="hidden font_style">Select trainer</button>
+                <button id="changeTrainerButton" class="hidden font_style">Change trainer</button>
+                <button id="catchPokemon" class="hidden font_style">Catch Pokemon</button>
+                <button id="catchPokemon" class="hidden font_style">Change Pokemon</button>
+                <button id="changePokemon" class="hidden font_style">Change Pokemon</button>
+
+            </div>
             <div id="pokemons" class="hidden">
+
                 <img id="pikachu" class="pokemon" src="Assets/img/pikachu.png" alt="pikachu">
                 <img id="charmander" class="pokemon" src="Assets/img/charmander.png" alt="charmander">
                 <img id="bulbasaur" class="pokemon" src="Assets/img/bulbasaur.png" alt="bulbasaur">
                 <img id="squırtle" class="pokemon" src="Assets/img/squirtle.png" alt="Squırtle">
+
+            </div>
+            <div>
+
+            </div>
+            <div id="confirmButtons" class="hidden">
+
+                <button id="playButton">Start the battle</button>
             </div>
         </div>
-
-
-
     </div>
-
     </div>
-
-
-
-
-
     <script src="pokemon.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </body>
 
 </html>

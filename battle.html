@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="battle-styles.css">
+    <link rel="shortcut icon" href="Assets/img/Pokemon-Logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <audio id="background-music" src="Assets/sounds/soundtracks/soundtrack-to-start.mp3" loop autoplay></audio>
+        <div class="header">
+            <a href="index.html"><img id="logo" class="logo-pokemon" src="Assets/img/Pokemon-Logo.png"
+                    alt="logo-pokemon"></a>
+            <h1 class="w3-animate-bot">Last Edition</h1>
+        </div>
+        <div id="field">
+            <div id="battle-field">
+                <div class="pokemon-battle" id="pikachu">
+                    <h2 id="pokemon-name">Pikachu</h2>
+                    <div class="health-bar-container">
+                        <div class="health-bar"></div>
+                    </div>
+                    <p class="health-text">100 / 100 HP</p>
+
+                </div>
+
+                <div class="enemy-pokemon" id="charmander">
+                    <h2 id="enemy">Charmander</h2>
+                    <div class="health-bar-container">
+                        <div class="health-bar"></div>
+                    </div>
+                    <p class="health-text">100 / 100 HP</p>
+
+                </div>
+            </div>
+            <div>
+                <button id="attackButton" class="play">Attack</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="index.js"></script>
+    <script src="battle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+
+</html>

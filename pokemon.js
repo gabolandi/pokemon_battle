@@ -1,29 +1,15 @@
-// //Pokemones iniciales
-// let pokemons = ['Charmander', 'Squirtle', 'Bulbasaur'];
-// let player1 = '';
-// let player2 = '';
-// let player1pokemon = '';
-// let player2pokemon = '';
-// let player1life = 100;
-// let player2life = 100;
-
-
-
-
-
-//Sonidos Pokemon
-const pokemonsImg = document.querySelectorAll('pokemons');
+const pokemons = ["Pikachu", "Charmander", "Bulbasaur", "Squirtle"];
 
 
 document.addEventListener("click", function (event) {
-    // Verifica si el elemento tiene un id
+    // Verify if the element has id
     if (event.target.id) {
         makeSound(event.target.id);
     }
-    console.log(event.target.id);
+    // console.log(event.target.id);
 });
 
-//Start the game -> show to select gender player
+//Start the game -> shows  trainers options
 document.querySelector(".pokeball").addEventListener("click", function () {
     console.log('Game started');
     $("#start").hide();
@@ -32,128 +18,136 @@ document.querySelector(".pokeball").addEventListener("click", function () {
 });
 
 
-// Seleccionar entrenador Ash
-document.querySelector("#ash").addEventListener("click", function () {
-    // Ocultar Misty y resaltar Ash
-    $("#misty").hide();
-    $("#ash").addClass("active-trainer");
-    $(".select-paragraph").text('You choose Ash')
 
-    // Crear el botón de "Change Trainer"
-    if (!document.querySelector("#changeTrainerButton")) {
-        let changeTrainerButton = document.createElement("button");
-        changeTrainerButton.id = "changeTrainerButton";
-        changeTrainerButton.textContent = "Change Trainer";
-        document.getElementById("gender").appendChild(changeTrainerButton);
-        // Evento para cambiar de entrenador
-        changeTrainerButton.addEventListener("click", function () {
-            $("#misty").show();
-            $("#ash").removeClass("active-trainer");
-            changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
-            continueButton.remove(); // Eliminar el botón para continuar
-        });
-    }
-    if (!document.querySelector("#continueButton")) {
-        let continueButton = document.createElement("button");
-        continueButton.id = "continueButton";
-        continueButton.textContent = "Select Pokemon";
-        document.getElementById("gender").appendChild(continueButton);
-        // Evento para cambiar de entrenador
-        continueButton.addEventListener("click", function () {
-            continueButton.remove(); // Eliminar el botón para continuar
-            changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
-        });
-        // Evento para pasar a la selección de Pokémon
-        continueButton.addEventListener("click", function () {
-            // Mostrar la sección de selección de Pokémon
-            $("#pokemons").removeClass("hidden");
-
-            // Eliminar el botón de continuar
-            continueButton.remove();
-        });
-    }
-});
-
-// Seleccionar entrenador Misty
+// Choose Misty
 document.querySelector("#misty").addEventListener("click", function () {
-    // Ocultar Misty y resaltar Ash
+    // to hide Misty and highlight Ash
     $("#ash").hide();
     $("#misty").addClass("active-trainer");
     $(".select-paragraph").text('You choose Misty')
 
-    // Crear el botón de "Change Trainer"
-    if (!document.querySelector("#changeTrainerButton")) {
-        let changeTrainerButton = document.createElement("button");
-        changeTrainerButton.id = "changeTrainerButton";
-        changeTrainerButton.textContent = "Change Trainer";
-        document.getElementById("gender").appendChild(changeTrainerButton);
-        // Evento para cambiar de entrenador
-        changeTrainerButton.addEventListener("click", function () {
-            $("#ash").show();
-            $("#misty").removeClass("active-trainer");
-            changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
-            continueButton.remove(); // Eliminar el botón para continuar
-        });
-    }
-    if (!document.querySelector("#continueButton")) {
-        let continueButton = document.createElement("button");
-        continueButton.id = "continueButton";
-        continueButton.textContent = "Select Pokemon";
-        document.getElementById("gender").appendChild(continueButton);
-        // Evento para cambiar de entrenador
-        continueButton.addEventListener("click", function () {
-            continueButton.remove(); // Eliminar el botón para continuar
-            changeTrainerButton.remove(); // Eliminar el botón al cambiar de entrenador
-        });
-        // Evento para pasar a la selección de Pokémon
-        continueButton.addEventListener("click", function () {
-            // Mostrar la sección de selección de Pokémon
-            $("#pokemons").removeClass("hidden");
-            // Eliminar el botón de continuar
-            continueButton.remove();
-        });
-    }
+    // To Active buttons "Change Trainer" "Change pokemon"
+    $("#changeTrainerButton").removeClass("hidden");
+    $("#catchPokemon").removeClass("hidden");
+});
+
+document.querySelector("#ash").addEventListener("click", function () {
+
+    // hide Misty y show Ash
+    $("#misty").hide();
+    $("#ash").addClass("active-trainer");
+    $(".select-paragraph").text('You choose Ash')
+
+    // Activar botones "Change Trainer" "Change pokemon"
+    $("#changeTrainerButton").removeClass("hidden");
+    $("#catchPokemon").removeClass("hidden");
+});
+
+// Change trainer
+document.querySelector("#changeTrainerButton").addEventListener("click", function (trainer) {
+    // show trainers
+    $("#misty").show();
+    $("#ash").show();
+    $(`#misty`).removeClass("active-trainer");
+    $(`#ash`).removeClass("active-trainer");
+    $(".select-paragraph").text('Let choose a new trainer');
+
+    // remove continue button
+    continueButton.remove();
+});
+
+document.querySelector("#catchPokemon").addEventListener("click", function () {
+    // Shows pokemons section
+    $("#pokemons").removeClass("hidden");
+    makeSound("openPokeball");
+
+});
+
+document.querySelector('#changePokemon').addEventListener("click", function () {
+    $("#pokemons").show();
+    $("#changeTrainerButton").hide();
+    $("#catchPokemon").show();
+    $(".pokemon").show();
+    $(".pokemon").removeClass("active-pokemon");
 });
 
 
-// Seleccionar pokemones
-document.querySelector('#pikachu').addEventListener('click', function(){
-    $("#charmander").hide();
-    $("#squırtle").hide();
-    $("#bulbasaur").hide();
-    $('#pikachu').addClass('acitve-pokemon')
-    $(".select-paragraph").append(' and Pikachu as your partner')
-    console.log('Pikachu selected')
+
+
+//Choose pokemons
+
+document.querySelectorAll('.pokemon').forEach(pokemon => {
+    pokemon.addEventListener("click", function () {
+        $(".pokemon").not(this).hide();
+        $(".pokemon").removeClass("active-pokemon");
+        $(this).addClass("active-pokemon");
+
+        let pokemonName = this.id.charAt(0).toUpperCase() + this.id.slice(1);
+        $(".select-paragraph").text(`and ${pokemonName} as your partner`);
+        console.log(`${pokemonName} selected`);
+        $("#confirmButtons").removeClass("hidden");
+        $("#catchPokemon").hide();
+        $("#changePokemon").show();
+        // Save the name in  localStorage to use in battle.html
+        localStorage.setItem("selectedPokemon", pokemonName);
+    });
 });
 
-document.querySelector('#charmander').addEventListener('click', function(){
-    $("#pikachu").hide();
-    $("#squırtle").hide();
-    $("#bulbasaur").hide();
-    $('#charmander').addClass('acitve-pokemon')
-    $(".select-paragraph").append(' and Charmander as your partner')
-    console.log('Charmander selected')
+
+// document.querySelector('#pikachu').addEventListener('click', function () {
+//     $("#charmander").hide();
+//     $("#squırtle").hide();
+//     $("#bulbasaur").hide();
+//     $('#pikachu').addClass('acitve-pokemon')
+//     $(".select-paragraph").text(' and Pikachu as your partner')
+//     console.log('Pikachu selected')
+//     $("#playButton").removeClass("hidden");
+// });
+
+// document.querySelector('#charmander').addEventListener('click', function () {
+//     $("#pikachu").hide();
+//     $("#squırtle").hide();
+//     $("#bulbasaur").hide();
+//     $('#charmander').addClass('acitve-pokemon')
+//     $(".select-paragraph").text(' and Charmander as your partner')
+//     console.log('Charmander selected')
+//     $("#playButton").removeClass("hidden");
+// });
+
+// document.querySelector('#squırtle').addEventListener('click', function () {
+//     $("#charmander").hide();
+//     $("#pikachu").hide();
+//     $("#bulbasaur").hide();
+//     $('#squırtle').addClass('acitve-pokemon')
+//     $(".select-paragraph").text(' and Squırtle as your partner')
+//     console.log('Squirtle selected')
+//     $("#playButton").removeClass("hidden");
+// });
+
+// document.querySelector('#bulbasaur').addEventListener('click', function () {
+//     $("#charmander").hide();
+//     $("#squırtle").hide();
+//     $("#pikachu").hide();
+//     $('#bulbasaur').addClass('acitve-pokemon')
+//     $(".select-paragraph").text(' and bulbasaur as your partner')
+//     console.log('Bulbasaur selected')
+//     $("#playButton").removeClass("hidden");
+// });
+
+
+
+// Play button
+document.querySelector('#playButton').addEventListener("click", function () {
+
+    window.location.href = 'battle.html';
+    let random = Math.floor(Math.random() * 4); // random number between 0 and 3
+    let enemy = pokemons[random];
+    localStorage.setItem("enemyPokemon", enemy);
+
 });
 
-document.querySelector('#squırtle').addEventListener('click', function(){
-    $("#charmander").hide();
-    $("#pikachu").hide();
-    $("#bulbasaur").hide();
-    $('#squırtle').addClass('acitve-pokemon')
-    $(".select-paragraph").append(' and Squırtle as your partner')
-    console.log('Squirtle selected')
-});
 
-document.querySelector('#bulbasaur').addEventListener('click', function(){
-    $("#charmander").hide();
-    $("#squırtle").hide();
-    $("#pikachu").hide();
-    $('#bulbasaur').addClass('acitve-pokemon')
-    $(".select-paragraph").append(' and bulbasaur as your partner')
-    console.log('Bulbasaur selected')
-});
-
-// Sonidos
+// Sounds effects
 function makeSound(pokemonId) {
     switch (pokemonId) {
         case "charmander":
@@ -180,26 +174,51 @@ function makeSound(pokemonId) {
         case "ash":
             var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
             audio.play();
-            audio.playbackRate = 4;
+            audio.playbackRate = 2;
             break;
         case "misty":
             var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
             audio.play();
-            audio.playbackRate = 4;
+            audio.playbackRate = 2;
+            break;
+        case "changePokemonButton":
+            var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
+            audio.play();
+            audio.playbackRate = 2;
+            break;
+        case "changeTrainerButton":
+            var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
+            audio.play();
+            audio.playbackRate = 2;
+            break;
+        case "catchPokemon":
+            var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
+            audio.play();
+            audio.playbackRate = 2;
+            break;
+        case "changePokemon":
+            var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
+            audio.play();
+            audio.playbackRate = 2;
+            break;
+        case "playButton":
+            var audio = new Audio("Assets/sounds/selecting/Select_player.mp3");
+            audio.play();
+            audio.playbackRate = 2;
             break;
         default:
             console.log(`No sound for ${pokemonId}`);
     }
 }
 
-//Seleccionar el audio
+// Background music
 const backgroundMusic = document.getElementById("background-music");
 
-//función para iniciar el sonido si no se reproduce automáticamente
- document.addEventListener("click", function () {
-     if (backgroundMusic.paused) {
-         backgroundMusic.play();
-     }
- });
+//To initialize the background music
+document.addEventListener("click", function () {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+    }
+});
 
 
